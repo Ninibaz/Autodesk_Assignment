@@ -101,5 +101,12 @@ describe('Google Calculator Functionality', () => {
   
       // Validate the result (24 ÷ 8 = 3)
       cy.get('span.qv3Wpe').should('have.text', '3');
+      //Divide a number by 0
+      cy.get('div[role="button"]').contains('2').click();
+      cy.get('div[role="button"][aria-label="divide"]').contains('÷').click();
+      cy.get('div[role="button"]').contains('0').click();
+      cy.get('div[role="button"][aria-label="equals"]').contains('=').click();
+      // Validate the result (2 ÷ 0 = Infinity)
+      cy.get('span.qv3Wpe').should('have.text', ' Infinity ');
     });
   });
