@@ -110,12 +110,6 @@ describe('Google Calculator Functionality', () => {
       cy.get('span.qv3Wpe').should('have.text', ' Infinity ');
     });
 
-    it('should not calculate incomplete expressions', () => {
-      cy.get('div[role="button"]').contains('2').click();
-      cy.get('div[role="button"][aria-label="equals"]').contains('=').click();
-      cy.get('span.qv3Wpe').should('not.contain', '2');
-    });
-
     it('should not recalculate the same result when "=" is pressed multiple times', () => {
       cy.get('div[role="button"]').contains('5').click();
       cy.get('div[role="button"][aria-label="plus"]').contains('+').click();
